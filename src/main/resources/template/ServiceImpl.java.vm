@@ -1,0 +1,37 @@
+package ${package}.${moduleName}.service.impl;
+
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.util.Arrays;
+
+import ${package}.${moduleName}.mapper.${className}Mapper;
+import ${package}.${moduleName}.domain.${className};
+import ${package}.${moduleName}.service.I${className}Service;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Service("${classname}Service")
+public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements I${className}Service {
+
+    @Resource
+    private ${className}Mapper ${classname}Mapper;
+
+    /**
+    * 批量删除${comments}
+    * @param ${pk.attrname}s
+    * @return
+    */
+    @Override
+    public boolean deleteByIds(Integer[] ${pk.attrname}s) {
+
+        return SqlHelper.retBool(${classname}Mapper.deleteByIds(Arrays.asList(${pk.attrname}s)));
+    }
+
+}

@@ -1,0 +1,104 @@
+package ${package}.${moduleName}.controller;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.tongyun.common.core.utils.SecurityUtils;
+import com.tongyun.common.core.web.controller.BaseController;
+import com.tongyun.common.core.web.domain.AjaxResult;
+import com.tongyun.common.log.annotation.Log;
+import com.tongyun.common.log.enums.BusinessType;
+import io.swagger.annotations.Api;
+import org.springframework.web.bind.annotation.*;
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
+
+import ${package}.${moduleName}.domain.${className};
+import ${package}.${moduleName}.service.I${className}Service;
+import ${package}.${moduleName}.mapper.${className}Mapper;
+
+/**
+ * ${comments}管理
+ *
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@RestController
+@RequestMapping("/${pathName}")
+@Tag(name = "${pathName}", description = "${comments}管理")
+public class ${className}Controller extends BaseController {
+
+    @Resource
+    private I${className}Service ${classname}Service;
+
+    /**
+     * ${comments}列表
+     *
+     * @param ${classname}
+     * @return
+     */
+    @GetMapping("/page")
+    @Operation(summary = "${comments}列表")
+    public AjaxResult<TableDataInfo<${className}>> page(@RequestBody ${className} ${classname}) {
+
+        startPage();
+        List<${className}> ${classname} = ${classname}Service.list(
+                new QueryWrapper<SysUser>()
+                        .eq("del_flag", 0));
+        return AjaxResult.success(getDataTable(${classname}));
+    }
+
+    /**
+     * ${comments}信息
+     *
+     * @param ${pk.attrname}
+     * @return
+     */
+    @GetMapping("/{${pk.attrname}}")
+    @Operation(summary = "${comments}信息")
+    public AjaxResult<${className}> info(@Parameter(description = "ID") @PathVariable Long ${pk.attrname}){
+
+        ${className} ${classname} = ${classname}Service.getOne(
+                new QueryWrapper<${className}>()
+                        .eq("del_flag", 0)
+                        .eq("${pk.columnName}", ${pk.attrname}));
+        return AjaxResult.success(${classname});
+    }
+
+    /**
+     * 保存${comments}信息
+     *
+     * @param ${classname}
+     * @return
+     */
+    @PostMapping
+    @Operation(summary = "保存${comments}列表")
+    public AjaxResult save(@RequestBody ${className} ${classname}){
+
+        ${classname}Service.save(${classname});
+        return AjaxResult.success();
+    }
+
+    /**
+     * 修改${comments}信息
+     */
+    @PutMapping
+    @Operation(summary = "修改${comments}列表")
+    public AjaxResult update(@RequestBody ${className} ${classname}){
+
+        ${classname}Service.updateById(${classname});
+        return AjaxResult.success();
+    }
+
+    /**
+     * 删除${comments}信息
+     */
+    @DeleteMapping
+    @Operation(summary = "删除${comments}列表")
+    public AjaxResult delete(@RequestBody Integer[] ${pk.attrname}s){
+
+        ${classname}Service.deleteByIds(${pk.attrname}s);
+        return AjaxResult.success();
+    }
+
+}

@@ -1,0 +1,22 @@
+package ${package}.${moduleName}.service;
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import ${package}.${moduleName}.domain.${className};
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+public interface I${className}Service extends IService<${className}> {
+
+    /**
+     * 批量删除${comments}信息
+     *
+     * @param ${pk.attrname} 需要删除的${comments}ID
+     * @return 结果
+     */
+    boolean deleteByIds(Integer[] ${pk.attrname});
+}
+
