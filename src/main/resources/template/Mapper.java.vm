@@ -2,10 +2,7 @@ package ${package}.${moduleName}.mapper;
 
 
 import ${package}.${moduleName}.domain.${className};
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.springframework.stereotype.Repository;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -17,8 +14,38 @@ import java.util.Collection;
  * @email ${email}
  * @date ${datetime}
  */
-@Repository
-public interface ${className}Mapper extends BaseMapper<${className}> {
+public interface ${className}Mapper {
+
+    /**
+     * ${comments}列表信息
+     *
+     * @return 结果
+     */
+    PageBean<${className}> page();
+
+    /**
+     * ${comments}详细信息
+     *
+     * @param ${pk.attrname} ${comments}ID
+     * @return 结果
+     */
+    ${className} selectByPrimaryKey(@Param("${pk.attrname}")Long ${pk.attrname});
+
+    /**
+     * 保存${comments}信息
+     *
+     * @param ${pk.attrname}
+     * @return 结果
+     */
+    void insertSelective(${className} ${classname});
+
+    /**
+     * 修改${comments}信息
+     *
+     * @param ${pk.attrname}
+     * @return 结果
+     */
+    void updateByPrimaryKeySelective(${className} ${classname});
 
     /**
      * 批量删除 ${comments}

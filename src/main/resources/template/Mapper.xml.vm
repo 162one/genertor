@@ -4,11 +4,50 @@
 <mapper namespace="${package}.${moduleName}.mapper.${className}Mapper">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="${package}.${moduleName}.domain.${className}" id="${classname}Map">
+    <resultMap type="${package}.${moduleName}.entity.${className}" id="${classname}Map">
 #foreach($column in $columns)
-        <result property="${column.attrname}"           column="${column.columnName}"/>
+        <result property="${column.attrname}" column="${column.columnName}" jdbcType="${column.dataType}"/>
 #end
     </resultMap>
+
+    <sql id="Base_Column_List">
+#foreach($column in $columns)
+        ${column.columnName},
+#end
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="${classname}Map">
+        select
+        <include refid="Base_Column_List" />
+        from ${tableName}
+        where  ${pk.columnName} = #{${pk.attrname},jdbcType=BIGINT}
+    </select>
+
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="${package}.${moduleName}.entity.${className}" useGeneratedKeys="true">
+        insert into ${tableName}
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+#foreach($column in $columns)
+                <if test="${column.attrname} != null">${column.columnName},</if>
+#end
+            </trim>
+            <trim prefix="values (" suffix=")" suffixOverrides=",">
+#foreach($column in $columns)
+                <if test="${column.attrname} != null">#{${column.attrname},jdbcType="${column.dataType}},</if>
+#end
+            </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="${package}.${moduleName}.entity.${className}">
+        update ${tableName}
+            <set>
+#foreach($column in $columns)
+            <if test="${column.attrname} != null">
+                ${column.columnName} = #{${column.attrname},jdbcType="${column.dataType}},
+            </if>
+#end
+            </set>
+        where   id = #{id,jdbcType=BIGINT}
+    </update>
 
     <update id="deleteByIds" parameterType="list">
         UPDATE ${tableName} SET del_flag = 1 WHERE ${pk.columnName} IN

@@ -1,5 +1,4 @@
 /**
- * Copyright 2018 同云开源 http://www.tongyun.io
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -201,7 +200,7 @@ public class GenUtils {
 		}
 
 		if (template.contains("Entity.java.vm" )) {
-			return packagePath + "domain" + File.separator + className + ".java";
+			return packagePath + "entity" + File.separator + className + ".java";
 		}
 
 		if (template.contains("Mapper.java.vm" )) {
@@ -209,11 +208,11 @@ public class GenUtils {
 		}
 
 		if (template.contains("IService.java.vm" )) {
-			return packagePath + "service" + File.separator +"I"+className + "Service.java";
+			return packagePath + "facade" + File.separator +className + "Facade.java";
 		}
 
 		if (template.contains("ServiceImpl.java.vm" )) {
-			return packagePath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
+			return packagePath + "facade" + File.separator + "impl" + File.separator + className + "FacadeImpl.java";
 		}
 
 		if (template.contains("Controller.java.vm" )) {

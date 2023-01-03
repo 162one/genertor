@@ -1,7 +1,6 @@
 package ${package}.${moduleName}.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
-import ${package}.${moduleName}.domain.${className};
+import ${package}.${moduleName}.entity.${className};
 
 /**
  * ${comments}
@@ -9,7 +8,39 @@ import ${package}.${moduleName}.domain.${className};
  * @author ${author}
  * @date ${datetime}
  */
-public interface I${className}Service extends IService<${className}> {
+public interface ${className}Facade {
+
+    /**
+     * ${comments}列表信息
+     *
+     * @param pageParam
+     * @return 结果
+     */
+    PageBean<${className}> page(PageParam pageParam);
+
+    /**
+     * ${comments}详细信息
+     *
+     * @param ${pk.attrname} ${comments}ID
+     * @return 结果
+     */
+    ${className} info(Long ${pk.attrname});
+
+    /**
+     * 保存${comments}信息
+     *
+     * @param ${pk.attrname}
+     * @return 结果
+     */
+    void insert(${className} ${classname});
+
+    /**
+     * 修改${comments}信息
+     *
+     * @param ${pk.attrname}
+     * @return 结果
+     */
+    void update(${className} ${classname});
 
     /**
      * 批量删除${comments}信息
@@ -17,6 +48,6 @@ public interface I${className}Service extends IService<${className}> {
      * @param ${pk.attrname} 需要删除的${comments}ID
      * @return 结果
      */
-    boolean deleteByIds(Integer[] ${pk.attrname});
+    void deleteByIds(Long[] ${pk.attrname}s);
 }
 

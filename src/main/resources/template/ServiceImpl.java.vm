@@ -1,15 +1,22 @@
 package ${package}.${moduleName}.service.impl;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.baomidou.mybatisplus.extension.toolkit.SqlHelper;
-import org.springframework.stereotype.Service;
+
+import com.alibaba.fastjson.JSON;
+import com.baomidou.dynamic.datasource.annotation.DS;
+
+import com.hd.common.util.PageBean;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.Arrays;
 
 import ${package}.${moduleName}.mapper.${className}Mapper;
-import ${package}.${moduleName}.domain.${className};
-import ${package}.${moduleName}.service.I${className}Service;
+import ${package}.${moduleName}.entity.${className};
+import ${package}.${moduleName}.facade.${className}Facade;
 
 /**
  * ${comments}
@@ -17,21 +24,80 @@ import ${package}.${moduleName}.service.I${className}Service;
  * @author ${author}
  * @date ${datetime}
  */
-@Service("${classname}Service")
-public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements I${className}Service {
+@Service
+@Slf4j
+@DS("${moduleName}")
+public class ${className}FacadeImpl implements ${className}Facade {
 
     @Resource
     private ${className}Mapper ${classname}Mapper;
 
     /**
-    * 批量删除${comments}
-    * @param ${pk.attrname}s
-    * @return
-    */
+     * ${comments}列表信息
+     *
+     * @param pageParam
+     * @return 结果
+     */
     @Override
-    public boolean deleteByIds(Integer[] ${pk.attrname}s) {
+    public PageBean<${className}> page(PageParam pageParam) {
 
-        return SqlHelper.retBool(${classname}Mapper.deleteByIds(Arrays.asList(${pk.attrname}s)));
+        log.info("${className}FacadeImpl.page:入参：pageParam:{}", JSON.toJSON(pageParam));
+        pageParam.startPage();
+        List<${className}> ${classname}List = ${classname}Mapper.page();
+        PageBean<${className}> ${classname}PageBean = new PageBean<>(${classname}List);
+        return customerPageBean;
+    }
+
+    /**
+     * ${comments}详细信息
+     *
+     * @param ${pk.attrname} ${comments}ID
+     * @return 结果
+     */
+    @Override
+    public ${className} info(Long ${pk.attrname}) {
+
+        log.info("${className}FacadeImpl.info:入参：${pk.attrname}:{}", ${pk.attrname});
+        ${className} ${classname} =${classname}Mapper.selectByPrimaryKey(${pk.attrname});
+        return ${classname};
+    }
+
+    /**
+     * 保存${comments}信息
+     *
+     * @param ${pk.attrname}
+     * @return 结果
+     */
+    @Override
+    public void insert(${className} ${classname}) {
+
+        log.info("${className}FacadeImpl.insert:入参：${classname}:{}", JSON.toJSON(${classname}));
+            ${classname}Mapper.insertSelective(${classname});
+    }
+
+    /**
+     * 修改${comments}信息
+     *
+     * @param ${pk.attrname}
+     * @return 结果
+     */
+    @Override
+    public void update(${className} ${classname}) {
+        log.info("${className}FacadeImpl.update:入参：${classname}:{}", JSON.toJSON(${classname}));
+            ${classname}Mapper.updateByPrimaryKeySelective(${classname});
+    }
+
+    /**
+     * 批量删除${comments}信息
+     *
+     * @param ${pk.attrname} 需要删除的${comments}ID
+     * @return 结果
+     */
+    @Override
+    public void deleteByIds(Integer[] ${pk.attrname}s) {
+
+        log.info("${className}FacadeImpl.deleteByIds:入参：${pk.attrname}s:{}", JSON.toJSON(${pk.attrname}s));
+        return ${classname}Mapper.deleteByIds(Arrays.asList(${pk.attrname}s));
     }
 
 }

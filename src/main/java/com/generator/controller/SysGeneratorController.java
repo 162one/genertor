@@ -43,7 +43,7 @@ public class SysGeneratorController {
 		byte[] data = sysGeneratorService.generatorCode(tables.split(","));
 
 		response.reset();
-        response.setHeader("Content-Disposition", "attachment; filename=\"tongyun.zip\"");
+        response.setHeader("Content-Disposition", "attachment; filename=\"znhd.zip\"");
         response.addHeader("Content-Length", "" + data.length);
         response.setContentType("application/octet-stream; charset=UTF-8");
 

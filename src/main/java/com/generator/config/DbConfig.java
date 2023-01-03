@@ -1,5 +1,4 @@
 /**
- * Copyright 2018 同云开源 http://www.tongyun.io
  * <p>
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -33,7 +32,7 @@ import javax.annotation.Resource;
  */
 @Configuration
 public class DbConfig {
-    @Value("${tongyun.database: mysql}")
+    @Value("${znhd.database: mysql}")
     private String database;
     @Resource
     private MySQLGeneratorDao mySQLGeneratorDao;

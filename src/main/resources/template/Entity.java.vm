@@ -1,9 +1,7 @@
-package ${package}.${moduleName}.domain;
+package ${package}.${moduleName}.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -21,22 +19,16 @@ import java.math.BigDecimal;
  * @date ${datetime}
  */
 @Data
-@Schema
-@TableName("${tableName}")
+@ApiModel("${comments}信息")
 public class ${className} implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 #foreach ($column in $columns)
 	/**
 	 *	$column.comments
 	 */
-#if($column.columnName == $pk.columnName)
-    @TableId
-#end
-#if ("datetime" == $column.dataType)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-#end
-    @Schema(description = "$column.comments")
+    @ApiModelProperty("$column.comments")
     private $column.attrType $column.attrname;
 #end
 }
