@@ -6,7 +6,7 @@
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="${package}.${moduleName}.entity.${className}" id="${classname}Map">
 #foreach($column in $columns)
-        <result property="${column.attrname}" column="${column.columnName}" jdbcType="${column.dataType}"/>
+        <result property="${column.attrname}" column="${column.columnName}" jdbcType="${column.dataTypeToUpperCase}"/>
 #end
     </resultMap>
 
@@ -20,7 +20,7 @@
         select
         <include refid="Base_Column_List" />
         from ${tableName}
-        where  ${pk.columnName} = #{${pk.attrname},jdbcType=BIGINT}
+        where  ${pk.columnName} = #{${pk.attrname},jdbcType=${column.dataTypeToUpperCase}}
     </select>
 
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="${package}.${moduleName}.entity.${className}" useGeneratedKeys="true">
@@ -32,7 +32,7 @@
             </trim>
             <trim prefix="values (" suffix=")" suffixOverrides=",">
 #foreach($column in $columns)
-                <if test="${column.attrname} != null">#{${column.attrname},jdbcType="${column.dataType}},</if>
+                <if test="${column.attrname} != null">#{${column.attrname},jdbcType="${column.dataTypeToUpperCase}},</if>
 #end
             </trim>
     </insert>
@@ -42,7 +42,7 @@
             <set>
 #foreach($column in $columns)
             <if test="${column.attrname} != null">
-                ${column.columnName} = #{${column.attrname},jdbcType="${column.dataType}},
+                ${column.columnName} = #{${column.attrname},jdbcType="${column.dataTypeToUpperCase}},
             </if>
 #end
             </set>

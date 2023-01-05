@@ -8,10 +8,12 @@ package com.generator.entity;
  * @date 2016年12月20日 上午12:01:45
  */
 public class ColumnEntity {
-	//列名
+    //列名
     private String columnName;
-    //列名类型
+    //列名类型小写
     private String dataType;
+    //列名类型大写
+    private String dataTypeToUpperCase;
     //列名备注
     private String comments;
 
@@ -24,46 +26,85 @@ public class ColumnEntity {
     //auto_increment
     private String extra;
 
-	public String getColumnName() {
-		return columnName;
-	}
-	public void setColumnName(String columnName) {
-		this.columnName = columnName;
-	}
-	public String getDataType() {
-		return dataType;
-	}
-	public void setDataType(String dataType) {
-		this.dataType = dataType;
-	}
-	public String getComments() {
-		return comments;
-	}
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
-	public String getAttrname() {
-		return attrname;
-	}
-	public void setAttrname(String attrname) {
-		this.attrname = attrname;
-	}
-	public String getAttrName() {
-		return attrName;
-	}
-	public void setAttrName(String attrName) {
-		this.attrName = attrName;
-	}
-	public String getAttrType() {
-		return attrType;
-	}
-	public void setAttrType(String attrType) {
-		this.attrType = attrType;
-	}
-	public String getExtra() {
-		return extra;
-	}
-	public void setExtra(String extra) {
-		this.extra = extra;
-	}
+    public String getColumnName() {
+        return columnName;
+    }
+
+    public void setColumnName(String columnName) {
+        this.columnName = columnName;
+    }
+
+    public String getDataType() {
+        return dataType;
+    }
+
+    public void setDataType(String dataType) {
+        this.dataType = dataType;
+        this.dataTypeToUpperCase = exChange(dataType);
+    }
+
+    public String getDataTypeToUpperCase() {
+        return dataTypeToUpperCase;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getAttrname() {
+        return attrname;
+    }
+
+    public void setAttrname(String attrname) {
+        this.attrname = attrname;
+    }
+
+    public String getAttrName() {
+        return attrName;
+    }
+
+    public void setAttrName(String attrName) {
+        this.attrName = attrName;
+    }
+
+    public String getAttrType() {
+        return attrType;
+    }
+
+    public void setAttrType(String attrType) {
+        this.attrType = attrType;
+    }
+
+    public String getExtra() {
+        return extra;
+    }
+
+    public void setExtra(String extra) {
+        this.extra = extra;
+    }
+
+    /**
+     * 将小写字母转大写
+     *
+     * @param str
+     * @return
+     */
+    public static String exChange(String str) {
+        StringBuffer sb = new StringBuffer();
+        if (str != null) {
+            for (int i = 0; i < str.length(); i++) {
+                char c = str.charAt(i);
+                if (Character.isLowerCase(c)) {
+
+                    sb.append(Character.toUpperCase(c));
+                }
+            }
+        }
+        return sb.toString();
+    }
 }
+
