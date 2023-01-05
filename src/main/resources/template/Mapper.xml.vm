@@ -6,7 +6,11 @@
 	<!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="${package}.${moduleName}.entity.${className}" id="${classname}Map">
 #foreach($column in $columns)
+#if($column.columnName == $pk.columnName)
+        <id property="${column.attrname}" column="${column.columnName}" jdbcType="${column.dataTypeToUpperCase}"/>
+#else
         <result property="${column.attrname}" column="${column.columnName}" jdbcType="${column.dataTypeToUpperCase}"/>
+#end
 #end
     </resultMap>
 
@@ -48,11 +52,11 @@
         where   id = #{id,jdbcType=BIGINT}
     </update>
 
-    <update id="deleteByIds" parameterType="list">
-        UPDATE ${tableName} SET del_flag = 1 WHERE ${pk.columnName} IN
+    <delete id="deleteByIds" parameterType="list">
+        delete from ${tableName} WHERE ${pk.columnName} IN
         <foreach collection="idList" index="index" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
-    </update>
+    </delete>
 
 </mapper>

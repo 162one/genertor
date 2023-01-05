@@ -72,7 +72,7 @@ public class ${className}FacadeImpl implements ${className}Facade {
     public void insert(${className} ${classname}) {
 
         log.info("${className}FacadeImpl.insert:入参：${classname}:{}", JSON.toJSON(${classname}));
-            ${classname}Mapper.insertSelective(${classname});
+        ${classname}Mapper.insertSelective(${classname});
     }
 
     /**
@@ -84,7 +84,7 @@ public class ${className}FacadeImpl implements ${className}Facade {
     @Override
     public void update(${className} ${classname}) {
         log.info("${className}FacadeImpl.update:入参：${classname}:{}", JSON.toJSON(${classname}));
-            ${classname}Mapper.updateByPrimaryKeySelective(${classname});
+        ${classname}Mapper.updateByPrimaryKeySelective(${classname});
     }
 
     /**
