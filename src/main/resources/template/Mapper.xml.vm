@@ -11,16 +11,15 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-#foreach($column in $columns)
-        ${column.columnName},
-#end
+        #foreach($column in $columns)#if($column.columnName == $pk.columnName)${column.columnName}#else,${column.columnName}#end#end
+
     </sql>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="${classname}Map">
         select
         <include refid="Base_Column_List" />
         from ${tableName}
-        where  ${pk.columnName} = #{${pk.attrname},jdbcType=${column.dataTypeToUpperCase}}
+        where  ${pk.columnName} = #{${pk.attrname},jdbcType=${pk.dataTypeToUpperCase}}
     </select>
 
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="${package}.${moduleName}.entity.${className}" useGeneratedKeys="true">
@@ -32,7 +31,7 @@
             </trim>
             <trim prefix="values (" suffix=")" suffixOverrides=",">
 #foreach($column in $columns)
-                <if test="${column.attrname} != null">#{${column.attrname},jdbcType="${column.dataTypeToUpperCase}},</if>
+                <if test="${column.attrname} != null">#{${column.attrname},jdbcType=${column.dataTypeToUpperCase}},</if>
 #end
             </trim>
     </insert>
@@ -42,7 +41,7 @@
             <set>
 #foreach($column in $columns)
             <if test="${column.attrname} != null">
-                ${column.columnName} = #{${column.attrname},jdbcType="${column.dataTypeToUpperCase}},
+                ${column.columnName} = #{${column.attrname},jdbcType=${column.dataTypeToUpperCase}},
             </if>
 #end
             </set>

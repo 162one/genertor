@@ -40,7 +40,11 @@ public class ColumnEntity {
 
     public void setDataType(String dataType) {
         this.dataType = dataType;
-        this.dataTypeToUpperCase = exChange(dataType);
+        if ("datetime".equals(dataType)) {
+            this.dataTypeToUpperCase = "DATE";
+        } else {
+            this.dataTypeToUpperCase = exChange(dataType);
+        }
     }
 
     public String getDataTypeToUpperCase() {
