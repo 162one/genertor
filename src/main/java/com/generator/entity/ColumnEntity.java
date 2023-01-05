@@ -41,7 +41,9 @@ public class ColumnEntity {
     public void setDataType(String dataType) {
         this.dataType = dataType;
         if ("datetime".equals(dataType)) {
-            this.dataTypeToUpperCase = "DATE";
+            this.dataTypeToUpperCase = "TIMESTAMP";
+        } else if ("int".equals(dataType)) {
+            this.dataTypeToUpperCase = "INTEGER";
         } else {
             this.dataTypeToUpperCase = exChange(dataType);
         }
