@@ -40,12 +40,18 @@ public class ColumnEntity {
 
     public void setDataType(String dataType) {
         this.dataType = dataType;
-        if ("datetime".equals(dataType)) {
-            this.dataTypeToUpperCase = "TIMESTAMP";
-        } else if ("int".equals(dataType)) {
-            this.dataTypeToUpperCase = "INTEGER";
+        if (dataType != null) {
+            if ("datetime".equals(dataType)) {
+                this.dataTypeToUpperCase = "TIMESTAMP";
+            } else if ("int".equals(dataType)) {
+                this.dataTypeToUpperCase = "INTEGER";
+            } else if (dataType.indexOf("text") != -1) {
+                this.dataTypeToUpperCase = "LONGNVARCHAR";
+            } else {
+                this.dataTypeToUpperCase = exChange(dataType);
+            }
         } else {
-            this.dataTypeToUpperCase = exChange(dataType);
+            this.dataTypeToUpperCase = null;
         }
     }
 
