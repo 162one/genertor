@@ -31,7 +31,7 @@ public class ${className}Controller extends WebBaseController {
     /**
      * ${comments}列表
      *
-     * @param ${classname}
+     * @param pageParam
      * @return
      */
     @GetMapping("/page")
@@ -67,7 +67,7 @@ public class ${className}Controller extends WebBaseController {
     @ApiOperation("保存${comments}列表")
     public BaseResult save(@RequestBody @Validated ${className} ${classname}){
 
-        ${classname}Facade.save(${classname});
+        ${classname}Facade.insert(${classname});
         return BaseResult.success();
     }
 
@@ -78,7 +78,7 @@ public class ${className}Controller extends WebBaseController {
     @ApiOperation("修改${comments}列表")
     public BaseResult update(@RequestBody @Validated ${className} ${classname}){
 
-        ${classname}Facade.updateById(${classname});
+        ${classname}Facade.update(${classname});
         return BaseResult.success();
     }
 

@@ -29,7 +29,7 @@ public interface ${className}Facade {
     /**
      * 保存${comments}信息
      *
-     * @param ${pk.attrname}
+     * @param ${classname}
      * @return 结果
      */
     void insert(${className} ${classname});
@@ -37,7 +37,7 @@ public interface ${className}Facade {
     /**
      * 修改${comments}信息
      *
-     * @param ${pk.attrname}
+     * @param ${classname}
      * @return 结果
      */
     void update(${className} ${classname});
@@ -45,7 +45,7 @@ public interface ${className}Facade {
     /**
      * 批量删除${comments}信息
      *
-     * @param ${pk.attrname} 需要删除的${comments}ID
+     * @param ${pk.attrname}s 需要删除的${comments}ID
      * @return 结果
      */
     void deleteByIds(Long[] ${pk.attrname}s);

@@ -65,7 +65,7 @@ public class ${className}FacadeImpl implements ${className}Facade {
     /**
      * 保存${comments}信息
      *
-     * @param ${pk.attrname}
+     * @param ${classname}
      * @return 结果
      */
     @Override
@@ -78,7 +78,7 @@ public class ${className}FacadeImpl implements ${className}Facade {
     /**
      * 修改${comments}信息
      *
-     * @param ${pk.attrname}
+     * @param ${classname}
      * @return 结果
      */
     @Override
@@ -90,14 +90,14 @@ public class ${className}FacadeImpl implements ${className}Facade {
     /**
      * 批量删除${comments}信息
      *
-     * @param ${pk.attrname} 需要删除的${comments}ID
+     * @param ${pk.attrname}s 需要删除的${comments}ID
      * @return 结果
      */
     @Override
-    public void deleteByIds(Integer[] ${pk.attrname}s) {
+    public void deleteByIds(Long[] ${pk.attrname}s) {
 
         log.info("${className}FacadeImpl.deleteByIds:入参：${pk.attrname}s:{}", JSON.toJSON(${pk.attrname}s));
-        return ${classname}Mapper.deleteByIds(Arrays.asList(${pk.attrname}s));
+        ${classname}Mapper.deleteByIds(Arrays.asList(${pk.attrname}s));
     }
 
 }
