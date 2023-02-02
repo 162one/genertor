@@ -29,7 +29,7 @@ public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${c
     * @return
     */
     @Override
-    public boolean deleteByIds(Integer[] ${pk.attrname}s) {
+    public boolean deleteByIds(Long[] ${pk.attrname}s) {
 
         return SqlHelper.retBool(${classname}Mapper.deleteByIds(Arrays.asList(${pk.attrname}s)));
     }

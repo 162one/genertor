@@ -17,6 +17,6 @@ public interface I${className}Service extends IService<${className}> {
      * @param ${pk.attrname} 需要删除的${comments}ID
      * @return 结果
      */
-    boolean deleteByIds(Integer[] ${pk.attrname});
+    boolean deleteByIds(Long[] ${pk.attrname});
 }
 
