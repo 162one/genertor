@@ -16,14 +16,15 @@
 
     <sql id="Base_Column_List">
         #foreach($column in $columns)#if($column.columnName == $pk.columnName)${column.columnName}#else,${column.columnName}#end#end
-
     </sql>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="${classname}Map">
         select
-        <include refid="Base_Column_List" />
-        from ${tableName}
-        where  ${pk.columnName} = #{${pk.attrname},jdbcType=${pk.dataTypeToUpperCase}}
+            <include refid="Base_Column_List" />
+        from
+            ${tableName}
+        where
+            ${pk.columnName} = #{${pk.attrname},jdbcType=${pk.dataTypeToUpperCase}}
     </select>
 
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="${package}.${moduleName}.entity.${className}" useGeneratedKeys="true">
@@ -53,10 +54,7 @@
     </update>
 
     <delete id="deleteByIds" parameterType="list">
-        delete from ${tableName} WHERE ${pk.columnName} IN
-        <foreach collection="idList" index="index" item="item" open="(" separator="," close=")">
-            #{item}
-        </foreach>
+        delete from ${tableName} WHERE ${pk.columnName} = #{${pk.attrname},jdbcType=${pk.dataTypeToUpperCase}}
     </delete>
 
 </mapper>

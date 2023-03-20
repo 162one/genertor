@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.baomidou.dynamic.datasource.annotation.DS;
 
 import com.hd.common.util.PageBean;
+import com.hd.common.util.PageParam;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.Resource;
@@ -12,7 +13,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
+import java.util.List;
 
 import ${package}.${moduleName}.mapper.${className}Mapper;
 import ${package}.${moduleName}.entity.${className};
@@ -45,7 +46,7 @@ public class ${className}FacadeImpl implements ${className}Facade {
         pageParam.startPage();
         List<${className}> ${classname}List = ${classname}Mapper.page();
         PageBean<${className}> ${classname}PageBean = new PageBean<>(${classname}List);
-        return customerPageBean;
+        return ${classname}PageBean;
     }
 
     /**
@@ -88,16 +89,16 @@ public class ${className}FacadeImpl implements ${className}Facade {
     }
 
     /**
-     * 批量删除${comments}信息
+     * 删除${comments}信息
      *
-     * @param ${pk.attrname}s 需要删除的${comments}ID
+     * @param ${pk.attrname} 需要删除的${comments}ID
      * @return 结果
      */
     @Override
-    public void deleteByIds(Long[] ${pk.attrname}s) {
+    public void deleteById(Long ${pk.attrname}s) {
 
-        log.info("${className}FacadeImpl.deleteByIds:入参：${pk.attrname}s:{}", JSON.toJSON(${pk.attrname}s));
-        ${classname}Mapper.deleteByIds(Arrays.asList(${pk.attrname}s));
+        log.info("${className}FacadeImpl.deleteById:入参：${pk.attrname}:{}", JSON.toJSON(${pk.attrname}));
+        ${classname}Mapper.deleteByPrimaryKey(${pk.attrname});
     }
 
 }

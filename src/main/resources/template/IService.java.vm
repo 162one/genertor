@@ -1,5 +1,7 @@
 package ${package}.${moduleName}.service;
 
+import com.hd.common.util.PageBean;
+import com.hd.common.util.PageParam;
 import ${package}.${moduleName}.entity.${className};
 
 /**
@@ -43,11 +45,11 @@ public interface ${className}Facade {
     void update(${className} ${classname});
 
     /**
-     * 批量删除${comments}信息
+     * 删除${comments}信息
      *
-     * @param ${pk.attrname}s 需要删除的${comments}ID
+     * @param ${pk.attrname} 需要删除的${comments}ID
      * @return 结果
      */
-    void deleteByIds(Long[] ${pk.attrname}s);
+    void deleteById(Long ${pk.attrname});
 }
 

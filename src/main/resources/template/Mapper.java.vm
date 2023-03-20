@@ -1,11 +1,10 @@
 package ${package}.${moduleName}.mapper;
 
 
-import ${package}.${moduleName}.domain.${className};
+import ${package}.${moduleName}.entity.${className};
 import org.apache.ibatis.annotations.Param;
 
-import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 
 /**
  * ${comments}
@@ -21,7 +20,7 @@ public interface ${className}Mapper {
      *
      * @return 结果
      */
-    PageBean<${className}> page();
+    List<${className}> page();
 
     /**
      * ${comments}详细信息
@@ -34,7 +33,7 @@ public interface ${className}Mapper {
     /**
      * 保存${comments}信息
      *
-     * @param ${pk.attrname}
+     * @param ${classname}
      * @return 结果
      */
     void insertSelective(${className} ${classname});
@@ -42,16 +41,16 @@ public interface ${className}Mapper {
     /**
      * 修改${comments}信息
      *
-     * @param ${pk.attrname}
+     * @param ${classname}
      * @return 结果
      */
     void updateByPrimaryKeySelective(${className} ${classname});
 
     /**
-     * 批量删除 ${comments}
+     * 删除 ${comments}
      *
-     * @param idList 需要删除的 ${comments}ID
+     * @param ${pk.attrname} 需要删除的 ${comments}ID
      * @return 结果
      */
-    Integer deleteByIds(@Param("idList") Collection<? extends Serializable> idList);
+    Integer deleteByPrimaryKey(@Param("${pk.attrname}") Long ${pk.attrname});
 }

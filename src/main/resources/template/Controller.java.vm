@@ -34,7 +34,7 @@ public class ${className}Controller extends WebBaseController {
      * @param pageParam
      * @return
      */
-    @GetMapping("/page")
+    @PostMapping("/page")
     @ApiOperation("${comments}列表")
     public BaseResult<PageBean<${className}>> page(@RequestBody @Validated PageParam pageParam) {
 
@@ -63,8 +63,8 @@ public class ${className}Controller extends WebBaseController {
      * @param ${classname}
      * @return
      */
-    @PostMapping
-    @ApiOperation("保存${comments}列表")
+    @PostMapping("/save")
+    @ApiOperation("保存${comments}信息")
     public BaseResult save(@RequestBody @Validated ${className} ${classname}){
 
         ${classname}Facade.insert(${classname});
@@ -74,8 +74,8 @@ public class ${className}Controller extends WebBaseController {
     /**
      * 修改${comments}信息
      */
-    @PutMapping
-    @ApiOperation("修改${comments}列表")
+    @PostMapping("/update")
+    @ApiOperation("修改${comments}信息")
     public BaseResult update(@RequestBody @Validated ${className} ${classname}){
 
         ${classname}Facade.update(${classname});
@@ -85,11 +85,11 @@ public class ${className}Controller extends WebBaseController {
     /**
      * 删除${comments}信息
      */
-    @DeleteMapping
-    @ApiOperation("删除${comments}列表")
-    public BaseResult delete(@RequestBody Long[] ${pk.attrname}s){
+    @PostMapping("/delete/{${pk.attrname}}")
+    @ApiOperation("删除${comments}信息")
+    public BaseResult delete(@PathVariable Long ${pk.attrname}){
 
-        ${classname}Facade.deleteByIds(${pk.attrname}s);
+        ${classname}Facade.deleteById(${pk.attrname}s);
         return BaseResult.success();
     }
 }
