@@ -95,9 +95,9 @@ public class ${className}FacadeImpl implements ${className}Facade {
      * @return 结果
      */
     @Override
-    public void deleteById(Long ${pk.attrname}s) {
+    public void deleteById(Long ${pk.attrname}) {
 
-        log.info("${className}FacadeImpl.deleteById:入参：${pk.attrname}:{}", JSON.toJSON(${pk.attrname}));
+        log.info("${className}FacadeImpl.deleteById:入参：${pk.attrname}:{}", ${pk.attrname});
         ${classname}Mapper.deleteByPrimaryKey(${pk.attrname});
     }
 

@@ -1,5 +1,6 @@
 package com.generator.service;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.generator.dao.GeneratorDao;
 import com.generator.utils.GenUtils;
 import com.generator.utils.PageUtils;
@@ -23,6 +24,7 @@ import java.util.zip.ZipOutputStream;
  * @date 2016年12月19日 下午3:33:38
  */
 @Service
+@DS("mysql")
 public class SysGeneratorService {
 	@Resource
 	private GeneratorDao generatorDao;

@@ -89,7 +89,7 @@ public class ${className}Controller extends WebBaseController {
     @ApiOperation("删除${comments}信息")
     public BaseResult delete(@PathVariable Long ${pk.attrname}){
 
-        ${classname}Facade.deleteById(${pk.attrname}s);
+        ${classname}Facade.deleteById(${pk.attrname});
         return BaseResult.success();
     }
 }
