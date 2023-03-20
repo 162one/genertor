@@ -22,7 +22,7 @@ var vm = new Vue({
                 area: ['806px', '467px'],
                 closeBtn: 1,
                 shadeClose: false,
-                content: ['http://cdn.znhd.io/donate.jpg', 'no']
+                content: ['http://cdn.zmhd.io/donate.jpg', 'no']
             });
         }
     }

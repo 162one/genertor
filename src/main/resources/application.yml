@@ -30,5 +30,5 @@ pagehelper:
 
 
 #指定数据库，可选值有【mysql、oracle、sqlserver、postgresql】
-znhd:
+zmhd:
   database: mysql
