@@ -12,6 +12,8 @@ public class ColumnEntity {
     private String columnName;
     //列名类型
     private String dataType;
+	//列名类型大写
+	private String dataTypeToUpperCase;
     //列名备注
     private String comments;
 
@@ -35,6 +37,23 @@ public class ColumnEntity {
 	}
 	public void setDataType(String dataType) {
 		this.dataType = dataType;
+		if (dataType != null) {
+			if ("datetime".equals(dataType)) {
+				this.dataTypeToUpperCase = "TIMESTAMP";
+			} else if ("int".equals(dataType)) {
+				this.dataTypeToUpperCase = "INTEGER";
+			} else if (dataType.indexOf("text") != -1) {
+				this.dataTypeToUpperCase = "LONGNVARCHAR";
+			} else {
+				this.dataTypeToUpperCase = exChange(dataType);
+			}
+		} else {
+			this.dataTypeToUpperCase = null;
+		}
+	}
+
+	public String getDataTypeToUpperCase() {
+		return dataTypeToUpperCase;
 	}
 	public String getComments() {
 		return comments;
