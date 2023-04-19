@@ -67,7 +67,7 @@ public class ${className}Controller extends WebBaseController {
     @ApiOperation("保存${comments}信息")
     public BaseResult save(@RequestBody @Validated ${className} ${classname}){
 
-        ${classname}Facade.insert(${classname});
+        ${classname}Facade.insert(${classname}, getUser());
         return BaseResult.success();
     }
 
@@ -78,7 +78,7 @@ public class ${className}Controller extends WebBaseController {
     @ApiOperation("修改${comments}信息")
     public BaseResult update(@RequestBody @Validated ${className} ${classname}){
 
-        ${classname}Facade.update(${classname});
+        ${classname}Facade.update(${classname}, getUser());
         return BaseResult.success();
     }
 

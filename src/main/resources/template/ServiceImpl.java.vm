@@ -7,6 +7,7 @@ import com.baomidou.dynamic.datasource.annotation.DS;
 import com.hd.common.util.PageBean;
 import com.hd.common.util.PageParam;
 import lombok.extern.slf4j.Slf4j;
+import com.hd.common.vo.CurrAccountVo;
 
 import javax.annotation.Resource;
 
@@ -70,9 +71,13 @@ public class ${className}FacadeImpl implements ${className}Facade {
      * @return 结果
      */
     @Override
-    public void insert(${className} ${classname}) {
+    public void insert(${className} ${classname}, CurrAccountVo account) {
 
         log.info("${className}FacadeImpl.insert:入参：${classname}:{}", JSON.toJSON(${classname}));
+        Long createBy = account.getId();
+        String createName = account.getName();
+        ${classname}.setCreateBy(createBy);
+        ${classname}.setCreateName(createName);
         ${classname}Mapper.insertSelective(${classname});
     }
 
@@ -83,8 +88,12 @@ public class ${className}FacadeImpl implements ${className}Facade {
      * @return 结果
      */
     @Override
-    public void update(${className} ${classname}) {
+    public void update(${className} ${classname}, CurrAccountVo account) {
         log.info("${className}FacadeImpl.update:入参：${classname}:{}", JSON.toJSON(${classname}));
+        Long createBy = account.getId();
+        String createName = account.getName();
+        ${classname}.setCreateBy(createBy);
+        ${classname}.setCreateName(createName);
         ${classname}Mapper.updateByPrimaryKeySelective(${classname});
     }
 

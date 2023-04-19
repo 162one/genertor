@@ -16,6 +16,7 @@
 
     <sql id="Base_Column_List">
         #foreach($column in $columns)#if($column.columnName == $pk.columnName)${column.columnName}#else,${column.columnName}#end#end
+
     </sql>
 
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="${classname}Map">
@@ -53,7 +54,7 @@
         where   id = #{id,jdbcType=BIGINT}
     </update>
 
-    <delete id="deleteByIds" parameterType="java.lang.Long">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from ${tableName} WHERE ${pk.columnName} = #{${pk.attrname},jdbcType=${pk.dataTypeToUpperCase}}
     </delete>
 

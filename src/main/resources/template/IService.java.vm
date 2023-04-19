@@ -2,6 +2,7 @@ package ${package}.${moduleName}.service;
 
 import com.hd.common.util.PageBean;
 import com.hd.common.util.PageParam;
+import com.hd.common.vo.CurrAccountVo;
 import ${package}.${moduleName}.entity.${className};
 
 /**
@@ -32,9 +33,10 @@ public interface ${className}Facade {
      * 保存${comments}信息
      *
      * @param ${classname}
+     * @param account
      * @return 结果
      */
-    void insert(${className} ${classname});
+    void insert(${className} ${classname}, CurrAccountVo account);
 
     /**
      * 修改${comments}信息
@@ -42,7 +44,7 @@ public interface ${className}Facade {
      * @param ${classname}
      * @return 结果
      */
-    void update(${className} ${classname});
+    void update(${className} ${classname}, CurrAccountVo account);
 
     /**
      * 删除${comments}信息

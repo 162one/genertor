@@ -34,7 +34,7 @@ spring:
       datasource:
         mysql: #学术模块
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://test.com:3306/hd_learning_center?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+          url: jdbc:mysql://test.com:3306/hd_im_center?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
           username: zmhd
           password: zmhd123!@#
   jackson:
