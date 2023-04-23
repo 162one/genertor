@@ -85,4 +85,25 @@ public class ColumnEntity {
 	public void setExtra(String extra) {
 		this.extra = extra;
 	}
+
+
+	/**
+	 * 将小写字母转大写
+	 *
+	 * @param str
+	 * @return
+	 */
+	public static String exChange(String str) {
+		StringBuffer sb = new StringBuffer();
+		if (str != null) {
+			for (int i = 0; i < str.length(); i++) {
+				char c = str.charAt(i);
+				if (Character.isLowerCase(c)) {
+
+					sb.append(Character.toUpperCase(c));
+				}
+			}
+		}
+		return sb.toString();
+	}
 }
