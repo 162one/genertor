@@ -30,6 +30,14 @@ public interface ${className}Facade {
     ${className} info(Long ${pk.attrname});
 
     /**
+     * ${comments}详细信息
+     *
+     * @param ${pk.attrname} ${comments}ID
+     * @return 结果
+     */
+    ${className} getById(Long ${pk.attrname});
+
+    /**
      * 保存${comments}信息
      *
      * @param ${classname}
@@ -45,6 +53,14 @@ public interface ${className}Facade {
      * @return 结果
      */
     void update(${className} ${classname}, CurrAccountVo account);
+
+    /**
+     * 修改${comments}信息
+     *
+     * @param ${classname}
+     * @return 结果
+     */
+    void updateById(${className} ${classname});
 
     /**
      * 删除${comments}信息

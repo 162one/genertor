@@ -60,8 +60,21 @@ public class ${className}FacadeImpl implements ${className}Facade {
     public ${className} info(Long ${pk.attrname}) {
 
         log.info("${className}FacadeImpl.info:入参：${pk.attrname}:{}", ${pk.attrname});
-        ${className} ${classname} =${classname}Mapper.selectByPrimaryKey(${pk.attrname});
+        ${className} ${classname} = ${classname}Mapper.selectByPrimaryKey(${pk.attrname});
         return ${classname};
+    }
+
+    /**
+     * ${comments}详细信息
+     *
+     * @param ${pk.attrname} ${comments}ID
+     * @return 结果
+     */
+    @Override
+    public ${className} getById(Long ${pk.attrname}) {
+
+        log.info("${className}FacadeImpl.getById:入参：${pk.attrname}:{}", ${pk.attrname});
+        return ${classname}Mapper.selectByPrimaryKey(${pk.attrname});
     }
 
     /**
@@ -94,6 +107,18 @@ public class ${className}FacadeImpl implements ${className}Facade {
         String createName = account.getName();
         ${classname}.setCreateBy(createBy);
         ${classname}.setCreateName(createName);
+        ${classname}Mapper.updateByPrimaryKeySelective(${classname});
+    }
+
+    /**
+     * 修改${comments}信息
+     *
+     * @param ${classname}
+     * @return 结果
+     */
+    @Override
+    public void updateById(${className} ${classname}) {
+        log.info("${className}FacadeImpl.updateById:入参：${classname}:{}", JSON.toJSON(${classname}));
         ${classname}Mapper.updateByPrimaryKeySelective(${classname});
     }
 

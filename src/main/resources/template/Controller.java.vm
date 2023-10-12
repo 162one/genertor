@@ -50,8 +50,7 @@ public class ${className}Controller extends WebBaseController {
      */
     @GetMapping("/{${pk.attrname}}")
     @ApiOperation("${comments}信息")
-    @ApiImplicitParam(name = "${pk.attrname}", value = "${comments}Id", required = true, paramType = "query", dataType = "Long")
-    public BaseResult<${className}> info(@PathVariable Long ${pk.attrname}){
+    public BaseResult<${className}> info(@ApiParam(name = "${pk.attrname}", value = "${comments}Id", required = true) @PathVariable Long ${pk.attrname}){
 
         ${className} ${classname} = ${classname}Facade.info(${pk.attrname});
         return BaseResult.success(${classname});
@@ -87,7 +86,7 @@ public class ${className}Controller extends WebBaseController {
      */
     @PostMapping("/delete/{${pk.attrname}}")
     @ApiOperation("删除${comments}信息")
-    public BaseResult delete(@PathVariable Long ${pk.attrname}){
+    public BaseResult delete(@ApiParam(name = "${pk.attrname}", value = "${comments}Id", required = true) @PathVariable Long ${pk.attrname}){
 
         ${classname}Facade.deleteById(${pk.attrname});
         return BaseResult.success();
