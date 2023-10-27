@@ -87,10 +87,12 @@ public class ${className}FacadeImpl implements ${className}Facade {
     public void insert(${className} ${classname}, CurrAccountVo account) {
 
         log.info("${className}FacadeImpl.insert:入参：${classname}:{}", JSON.toJSON(${classname}));
-        Long createBy = account.getId();
-        String createName = account.getName();
-        ${classname}.setCreateBy(createBy);
-        ${classname}.setCreateName(createName);
+        if (account != null) {
+            Long createBy = account.getId();
+            String createName = account.getName();
+            ${classname}.setCreateBy(createBy);
+            ${classname}.setCreateName(createName);
+        }
         ${classname}Mapper.insertSelective(${classname});
     }
 
@@ -103,22 +105,12 @@ public class ${className}FacadeImpl implements ${className}Facade {
     @Override
     public void update(${className} ${classname}, CurrAccountVo account) {
         log.info("${className}FacadeImpl.update:入参：${classname}:{}", JSON.toJSON(${classname}));
-        Long createBy = account.getId();
-        String createName = account.getName();
-        ${classname}.setCreateBy(createBy);
-        ${classname}.setCreateName(createName);
-        ${classname}Mapper.updateByPrimaryKeySelective(${classname});
-    }
-
-    /**
-     * 修改${comments}信息
-     *
-     * @param ${classname}
-     * @return 结果
-     */
-    @Override
-    public void updateById(${className} ${classname}) {
-        log.info("${className}FacadeImpl.updateById:入参：${classname}:{}", JSON.toJSON(${classname}));
+        if (account != null) {
+            Long createBy = account.getId();
+            String createName = account.getName();
+            ${classname}.setCreateBy(createBy);
+            ${classname}.setCreateName(createName);
+        }
         ${classname}Mapper.updateByPrimaryKeySelective(${classname});
     }
 

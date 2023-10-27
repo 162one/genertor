@@ -55,14 +55,6 @@ public interface ${className}Facade {
     void update(${className} ${classname}, CurrAccountVo account);
 
     /**
-     * 修改${comments}信息
-     *
-     * @param ${classname}
-     * @return 结果
-     */
-    void updateById(${className} ${classname});
-
-    /**
      * 删除${comments}信息
      *
      * @param ${pk.attrname} 需要删除的${comments}ID
