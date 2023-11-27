@@ -33,7 +33,7 @@ import javax.annotation.Resource;
  */
 @Configuration
 public class DbConfig {
-    @Value("${tongyun.database: mysql}")
+    @Value("${zmhd.database: mysql}")
     private String database;
     @Resource
     private MySQLGeneratorDao mySQLGeneratorDao;
