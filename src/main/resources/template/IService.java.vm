@@ -8,8 +8,8 @@ import ${package}.${moduleName}.entity.${className};
 /**
  * ${comments}
  *
- * @author ${author}
- * @date ${datetime}
+ * &#064;author ${author}
+ * &#064;date ${datetime}
  */
 public interface ${className}Facade {
 
@@ -61,5 +61,13 @@ public interface ${className}Facade {
      * @return 结果
      */
     void deleteById(Long ${pk.attrname});
+
+    /**
+     * 批量新增 ${comments}
+     *
+     * @param ${classname}s 需要新增的数据
+     * @return 结果
+     */
+    void batchInsert(List<${className}> ${classname}s);
 }
 

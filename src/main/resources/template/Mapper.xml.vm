@@ -67,4 +67,18 @@
         delete from ${tableName} WHERE ${pk.columnName} = #{${pk.attrname},jdbcType=${pk.dataTypeToUpperCase}}
     </delete>
 
+    <insert id="batchInsert">
+        INSERT INTO
+            ${tableName} (#foreach($column in $columns)#if($column.columnName == $pk.columnName)${column.columnName}#else,
+                ${column.columnName}#end#end
+
+            )
+        VALUES
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#foreach($column in $columns)#if($column.columnName == $pk.columnName)${column.columnName}#else,
+                #{item.${column.attrname}}#end#end
+
+            )
+        </foreach>
+    </insert>
 </mapper>

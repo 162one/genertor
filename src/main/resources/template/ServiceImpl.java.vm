@@ -23,8 +23,8 @@ import ${package}.${moduleName}.facade.${className}Facade;
 /**
  * ${comments}
  *
- * @author ${author}
- * @date ${datetime}
+ * &#064;author ${author}
+ * &#064;date ${datetime}
  */
 @Service
 @Slf4j
@@ -127,4 +127,16 @@ public class ${className}FacadeImpl implements ${className}Facade {
         ${classname}Mapper.deleteByPrimaryKey(${pk.attrname});
     }
 
+    /**
+     * 批量新增 ${comments}
+     *
+     * @param ${classname}s 需要新增的数据
+     * @return 结果
+     */
+    @Override
+    public void batchInsert(List<${className}> ${classname}s) {
+        if (${classname}s != null && ${classname}s.size() > 0) {
+            ${classname}Mapper.batchInsert(${classname}s);
+        }
+    }
 }

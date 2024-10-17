@@ -9,9 +9,9 @@ import java.util.List;
 /**
  * ${comments}
  *
- * @author ${author}
- * @email ${email}
- * @date ${datetime}
+ * &#064;author ${author}
+ * &#064;email ${email}
+ * &#064;date ${datetime}
  */
 public interface ${className}Mapper {
 
@@ -53,4 +53,12 @@ public interface ${className}Mapper {
      * @return 结果
      */
     Integer deleteByPrimaryKey(@Param("${pk.attrname}") Long ${pk.attrname});
+
+    /**
+     * 批量新增 ${comments}
+     *
+     * @param ${classname}s 需要新增的数据
+     * @return 结果
+     */
+    void batchInsert(List<${className}> ${classname}s);
 }

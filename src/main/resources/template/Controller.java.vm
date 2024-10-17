@@ -16,9 +16,9 @@ import ${package}.${moduleName}.facade.${className}Facade;
 /**
  * ${comments}管理
  *
- * @author ${author}
- * @email ${email}
- * @date ${datetime}
+ * &#064;author ${author}
+ * &#064;email ${email}
+ * &#064;date ${datetime}
  */
 @RestController
 @RequestMapping("/${pathName}")
