@@ -200,7 +200,7 @@ public class GenUtils {
 		}
 
 		if (template.contains("Entity.java.vm" )) {
-			return packagePath + "entity" + File.separator + className + ".java";
+			return packagePath + "entity" + File.separator + className + "Po.java";
 		}
 
 		if (template.contains("Mapper.java.vm" )) {
@@ -208,11 +208,11 @@ public class GenUtils {
 		}
 
 		if (template.contains("IService.java.vm" )) {
-			return packagePath + "facade" + File.separator +className + "Facade.java";
+			return packagePath + "facade" + File.separator +className + "Service.java";
 		}
 
 		if (template.contains("ServiceImpl.java.vm" )) {
-			return packagePath + "facade" + File.separator + "impl" + File.separator + className + "FacadeImpl.java";
+			return packagePath + "facade" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
 		}
 
 		if (template.contains("Controller.java.vm" )) {

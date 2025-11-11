@@ -2,8 +2,8 @@ package ${package}.${moduleName}.service;
 
 import com.hd.common.util.PageBean;
 import com.hd.common.util.PageParam;
-import com.hd.common.vo.CurrAccountVo;
-import ${package}.${moduleName}.entity.${className};
+import com.hd.common.model.vo.CurrAccountVo;
+import ${package}.${moduleName}.model.po.${className}Po;
 
 /**
  * ${comments}
@@ -11,7 +11,7 @@ import ${package}.${moduleName}.entity.${className};
  * &#064;author ${author}
  * &#064;date ${datetime}
  */
-public interface ${className}Facade {
+public interface ${className}Service {
 
     /**
      * ${comments}列表信息
@@ -19,7 +19,7 @@ public interface ${className}Facade {
      * @param pageParam
      * @return 结果
      */
-    PageBean<${className}> page(PageParam pageParam);
+    PageBean<${className}Po> page(PageParam pageParam);
 
     /**
      * ${comments}详细信息
@@ -27,7 +27,7 @@ public interface ${className}Facade {
      * @param ${pk.attrname} ${comments}ID
      * @return 结果
      */
-    ${className} info(Long ${pk.attrname});
+    ${className}Po info(Long ${pk.attrname});
 
     /**
      * ${comments}详细信息
@@ -35,24 +35,24 @@ public interface ${className}Facade {
      * @param ${pk.attrname} ${comments}ID
      * @return 结果
      */
-    ${className} getById(Long ${pk.attrname});
+    ${className}Po getById(Long ${pk.attrname});
 
     /**
      * 保存${comments}信息
      *
-     * @param ${classname}
+     * @param ${classname}Po
      * @param account
      * @return 结果
      */
-    void insert(${className} ${classname}, CurrAccountVo account);
+    void insert(${className}Po ${classname}, CurrAccountVo account);
 
     /**
      * 修改${comments}信息
      *
-     * @param ${classname}
+     * @param ${classname}Po
      * @return 结果
      */
-    void update(${className} ${classname}, CurrAccountVo account);
+    void update(${className}Po ${classname}, CurrAccountVo account);
 
     /**
      * 删除${comments}信息
@@ -68,6 +68,6 @@ public interface ${className}Facade {
      * @param ${classname}s 需要新增的数据
      * @return 结果
      */
-    void batchInsert(List<${className}> ${classname}s);
+    void batchInsert(List<${className}Po> ${classname}s);
 }
 

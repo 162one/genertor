@@ -4,14 +4,14 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import com.hd.web.common.util.BaseResult;
-import com.hd.web.common.util.WebBaseController;
+import com.hd.common.web.BaseResult;
+import com.hd.common.web.WebBaseController;
 import org.springframework.validation.annotation.Validated;
 import com.hd.common.util.PageBean;
 import com.hd.common.util.PageParam;
 
-import ${package}.${moduleName}.entity.${className};
-import ${package}.${moduleName}.facade.${className}Facade;
+import ${package}.${moduleName}.model.po.${className};
+import ${package}.${moduleName}.service.${className}Service;
 
 /**
  * ${comments}管理
@@ -26,7 +26,7 @@ import ${package}.${moduleName}.facade.${className}Facade;
 public class ${className}Controller extends WebBaseController {
 
     @Resource
-    private ${className}Facade ${classname}Facade;
+    private ${className}Service ${classname}Service;
 
     /**
      * ${comments}列表
@@ -36,9 +36,9 @@ public class ${className}Controller extends WebBaseController {
      */
     @PostMapping("/page")
     @ApiOperation("${comments}列表")
-    public BaseResult<PageBean<${className}>> page(@RequestBody @Validated PageParam pageParam) {
+    public BaseResult<PageBean<${className}Po>> page(@RequestBody @Validated PageParam pageParam) {
 
-        PageBean<${className}> ${classname} = ${classname}Facade.page(pageParam);
+        PageBean<${className}Po> ${classname} = ${classname}Service.page(pageParam);
         return BaseResult.success(${classname});
     }
 
@@ -50,9 +50,9 @@ public class ${className}Controller extends WebBaseController {
      */
     @GetMapping("/{${pk.attrname}}")
     @ApiOperation("${comments}信息")
-    public BaseResult<${className}> info(@ApiParam(name = "${pk.attrname}", value = "${comments}Id", required = true) @PathVariable Long ${pk.attrname}){
+    public BaseResult<${className}Po> info(@ApiParam(name = "${pk.attrname}", value = "${comments}Id", required = true) @PathVariable Long ${pk.attrname}){
 
-        ${className} ${classname} = ${classname}Facade.info(${pk.attrname});
+        ${className}Po ${classname} = ${classname}Service.info(${pk.attrname});
         return BaseResult.success(${classname});
     }
 
@@ -64,9 +64,9 @@ public class ${className}Controller extends WebBaseController {
      */
     @PostMapping("/save")
     @ApiOperation("保存${comments}信息")
-    public BaseResult save(@RequestBody @Validated ${className} ${classname}){
+    public BaseResult save(@RequestBody @Validated ${className}Po ${classname}){
 
-        ${classname}Facade.insert(${classname}, getUser());
+        ${classname}Service.insert(${classname}, getUser());
         return BaseResult.success();
     }
 
@@ -75,9 +75,9 @@ public class ${className}Controller extends WebBaseController {
      */
     @PostMapping("/update")
     @ApiOperation("修改${comments}信息")
-    public BaseResult update(@RequestBody @Validated ${className} ${classname}){
+    public BaseResult update(@RequestBody @Validated ${className}Po ${classname}){
 
-        ${classname}Facade.update(${classname}, getUser());
+        ${classname}Service.update(${classname}, getUser());
         return BaseResult.success();
     }
 
@@ -88,7 +88,7 @@ public class ${className}Controller extends WebBaseController {
     @ApiOperation("删除${comments}信息")
     public BaseResult delete(@ApiParam(name = "${pk.attrname}", value = "${comments}Id", required = true) @PathVariable Long ${pk.attrname}){
 
-        ${classname}Facade.deleteById(${pk.attrname});
+        ${classname}Service.deleteById(${pk.attrname});
         return BaseResult.success();
     }
 }

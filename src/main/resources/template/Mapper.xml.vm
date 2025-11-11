@@ -4,7 +4,7 @@
 <mapper namespace="${package}.${moduleName}.mapper.${className}Mapper">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="${package}.${moduleName}.entity.${className}" id="${classname}Map">
+    <resultMap type="${package}.${moduleName}.model.po.${className}Po" id="${classname}Map">
 #foreach($column in $columns)
 #if($column.columnName == $pk.columnName)
         <id property="${column.attrname}" column="${column.columnName}" jdbcType="${column.dataTypeToUpperCase}"/>
@@ -28,7 +28,7 @@
             ${pk.columnName} = #{${pk.attrname},jdbcType=${pk.dataTypeToUpperCase}}
     </select>
 
-    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="${package}.${moduleName}.entity.${className}" useGeneratedKeys="true">
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="${package}.${moduleName}.model.po.${className}Po" useGeneratedKeys="true">
         insert into ${tableName}
             <trim prefix="(" suffix=")" suffixOverrides=",">
 #foreach($column in $columns)
@@ -48,7 +48,7 @@
             </trim>
     </insert>
 
-    <update id="updateByPrimaryKeySelective" parameterType="${package}.${moduleName}.entity.${className}">
+    <update id="updateByPrimaryKeySelective" parameterType="${package}.${moduleName}.model.po.${className}Po">
         update ${tableName}
             <set>
 #foreach($column in $columns)

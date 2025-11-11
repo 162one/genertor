@@ -1,7 +1,7 @@
 package ${package}.${moduleName}.mapper;
 
 
-import ${package}.${moduleName}.entity.${className};
+import ${package}.${moduleName}.model.po.${className}Po;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public interface ${className}Mapper {
      *
      * @return 结果
      */
-    List<${className}> page();
+    List<${className}Po> page();
 
     /**
      * ${comments}详细信息
@@ -28,7 +28,7 @@ public interface ${className}Mapper {
      * @param ${pk.attrname} ${comments}ID
      * @return 结果
      */
-    ${className} selectByPrimaryKey(@Param("${pk.attrname}")Long ${pk.attrname});
+    ${className}Po selectByPrimaryKey(@Param("${pk.attrname}")Long ${pk.attrname});
 
     /**
      * 保存${comments}信息
@@ -36,7 +36,7 @@ public interface ${className}Mapper {
      * @param ${classname}
      * @return 结果
      */
-    void insertSelective(${className} ${classname});
+    void insertSelective(${className}Po ${classname});
 
     /**
      * 修改${comments}信息
@@ -44,7 +44,7 @@ public interface ${className}Mapper {
      * @param ${classname}
      * @return 结果
      */
-    void updateByPrimaryKeySelective(${className} ${classname});
+    void updateByPrimaryKeySelective(${className}Po ${classname});
 
     /**
      * 删除 ${comments}
@@ -60,5 +60,5 @@ public interface ${className}Mapper {
      * @param ${classname}s 需要新增的数据
      * @return 结果
      */
-    void batchInsert(List<${className}> ${classname}s);
+    void batchInsert(List<${className}Po> ${classname}s);
 }
