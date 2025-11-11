@@ -1,18 +1,12 @@
 package ${package}.${moduleName}.service.impl;
 
-
 import com.alibaba.fastjson.JSON;
-
 import com.hd.common.util.PageBean;
 import com.hd.common.util.PageParam;
 import lombok.extern.slf4j.Slf4j;
 import com.hd.common.model.vo.CurrAccountVo;
-
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 import ${package}.${moduleName}.mapper.${className}Mapper;
@@ -27,8 +21,7 @@ import ${package}.${moduleName}.service.${className}Service;
  */
 @Service
 @Slf4j
-@DS("${moduleName}")
-public class ${className}ServiceImpl implements ${className}Sevice {
+public class ${className}ServiceImpl implements ${className}Service {
 
     @Resource
     private ${className}Mapper ${classname}Mapper;
