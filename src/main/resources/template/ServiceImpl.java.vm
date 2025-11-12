@@ -3,6 +3,7 @@ package ${package}.${moduleName}.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.hd.common.util.PageBean;
 import com.hd.common.util.PageParam;
+import com.hd.common.util.list.ListUtil;
 import lombok.extern.slf4j.Slf4j;
 import com.hd.common.model.vo.CurrAccountVo;
 import javax.annotation.Resource;
@@ -127,7 +128,7 @@ public class ${className}ServiceImpl implements ${className}Service {
      */
     @Override
     public void batchInsert(List<${className}Po> ${classname}s) {
-        if (${classname}s != null && ${classname}s.size() > 0) {
+        if (ListUtil.isNotEmpty(${classname}s)) {
             ${classname}Mapper.batchInsert(${classname}s);
         }
     }
