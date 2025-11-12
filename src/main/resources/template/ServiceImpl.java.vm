@@ -36,7 +36,7 @@ public class ${className}ServiceImpl implements ${className}Service {
     @Override
     public PageBean<${className}Po> page(PageParam pageParam) {
 
-        log.info("${className}FacadeImpl.page:入参：pageParam:{}", JSON.toJSON(pageParam));
+        log.info("${className}ServiceImpl.page:入参：pageParam:{}", JSON.toJSON(pageParam));
         pageParam.startPage();
         List<${className}Po> ${classname}List = ${classname}Mapper.page();
         PageBean<${className}Po> ${classname}PageBean = new PageBean<>(${classname}List);
@@ -52,7 +52,7 @@ public class ${className}ServiceImpl implements ${className}Service {
     @Override
     public ${className}Po info(Long ${pk.attrname}) {
 
-        log.info("${className}FacadeImpl.info:入参：${pk.attrname}:{}", ${pk.attrname});
+        log.info("${className}ServiceImpl.info:入参：${pk.attrname}:{}", ${pk.attrname});
         ${className}Po ${classname} = ${classname}Mapper.selectByPrimaryKey(${pk.attrname});
         return ${classname};
     }
@@ -66,7 +66,7 @@ public class ${className}ServiceImpl implements ${className}Service {
     @Override
     public ${className}Po getById(Long ${pk.attrname}) {
 
-        log.info("${className}FacadeImpl.getById:入参：${pk.attrname}:{}", ${pk.attrname});
+        log.info("${className}ServiceImpl.getById:入参：${pk.attrname}:{}", ${pk.attrname});
         return ${classname}Mapper.selectByPrimaryKey(${pk.attrname});
     }
 
@@ -79,12 +79,14 @@ public class ${className}ServiceImpl implements ${className}Service {
     @Override
     public void insert(${className}Po ${classname}, CurrAccountVo account) {
 
-        log.info("${className}FacadeImpl.insert:入参：${classname}:{}", JSON.toJSON(${classname}));
+        log.info("${className}ServiceImpl.insert:入参：${classname}:{}", JSON.toJSON(${classname}));
         if (account != null) {
-            Long createBy = account.getId();
+            Long createBy = account.getEmpId();
             String createName = account.getName();
             ${classname}.setCreateBy(createBy);
             ${classname}.setCreateName(createName);
+            ${classname}.setUpdateBy(createBy);
+            ${classname}.setUpdateName(createName);
         }
         ${classname}Mapper.insertSelective(${classname});
     }
@@ -97,12 +99,12 @@ public class ${className}ServiceImpl implements ${className}Service {
      */
     @Override
     public void update(${className}Po ${classname}, CurrAccountVo account) {
-        log.info("${className}FacadeImpl.update:入参：${classname}:{}", JSON.toJSON(${classname}));
+        log.info("${className}ServiceImpl.update:入参：${classname}:{}", JSON.toJSON(${classname}));
         if (account != null) {
-            Long createBy = account.getId();
-            String createName = account.getName();
-            ${classname}.setCreateBy(createBy);
-            ${classname}.setCreateName(createName);
+            Long updateBy = account.getEmpId();
+            String updateName = account.getName();
+            ${classname}.setUpdateBy(updateBy);
+            ${classname}.setUpdateName(updateName);
         }
         ${classname}Mapper.updateByPrimaryKeySelective(${classname});
     }

@@ -5,6 +5,8 @@ import com.hd.common.util.PageParam;
 import com.hd.common.model.vo.CurrAccountVo;
 import ${package}.${moduleName}.model.po.${className}Po;
 
+import java.util.List;
+
 /**
  * ${comments}
  *
