@@ -8,8 +8,8 @@ import javax.annotation.Resource;
 import java.util.Arrays;
 
 import ${package}.${moduleName}.mapper.${className}Mapper;
-import ${package}.${moduleName}.domain.${className};
-import ${package}.${moduleName}.service.I${className}Service;
+import ${package}.${moduleName}.model.${className};
+import ${package}.${moduleName}.service.${className}Service;
 
 /**
  * ${comments}
@@ -18,7 +18,7 @@ import ${package}.${moduleName}.service.I${className}Service;
  * @date ${datetime}
  */
 @Service("${classname}Service")
-public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements I${className}Service {
+public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements ${className}Service {
 
     @Resource
     private ${className}Mapper ${classname}Mapper;

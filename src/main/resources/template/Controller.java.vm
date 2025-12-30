@@ -1,9 +1,9 @@
 package ${package}.${moduleName}.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.wz.common.web.controller.BaseController;
-import com.wz.common.web.domain.AjaxResult;
-import com.wz.common.web.page.TableDataInfo;
+import com.tool.common.web.WebBaseController;
+import com.tool.common.web.BaseResult;
+import com.tool.common.util.page.PageBean;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.List;
 
-import ${package}.${moduleName}.domain.${className};
-import ${package}.${moduleName}.service.I${className}Service;
+import ${package}.${moduleName}.model.${className};
+import ${package}.${moduleName}.service.${className}Service;
 
 /**
  * ${comments}管理
@@ -24,10 +24,10 @@ import ${package}.${moduleName}.service.I${className}Service;
 @RestController
 @RequestMapping("/${pathName}")
 @Tag(name = "${pathName}-controller", description = "${comments}管理")
-public class ${className}Controller extends BaseController {
+public class ${className}Controller extends WebBaseController {
 
     @Resource
-    private I${className}Service ${classname}Service;
+    private ${className}Service ${classname}Service;
 
     /**
      * ${comments}列表
@@ -36,13 +36,13 @@ public class ${className}Controller extends BaseController {
      */
     @GetMapping("/page")
     @Operation(summary = "${comments}列表")
-    public AjaxResult<TableDataInfo<${className}>> page() {
+    public BaseResult<PageBean<${className}>> page() {
 
         startPage();
         List<${className}> ${classname} = ${classname}Service.list(
                 new QueryWrapper<${className}>()
                         .eq("del_flag", 0));
-        return AjaxResult.success(getDataTable(${classname}));
+        return BaseResult.success(new PageBean<${className}>(${classname}));
     }
 
     /**
@@ -53,13 +53,13 @@ public class ${className}Controller extends BaseController {
      */
     @GetMapping("/{${pk.attrname}}")
     @Operation(summary = "${comments}信息")
-    public AjaxResult<${className}> info(@Parameter(description = "ID") @PathVariable Long ${pk.attrname}){
+    public BaseResult<${className}> info(@Parameter(description = "ID") @PathVariable Long ${pk.attrname}){
 
         ${className} ${classname} = ${classname}Service.getOne(
                 new QueryWrapper<${className}>()
                         .eq("del_flag", 0)
                         .eq("${pk.columnName}", ${pk.attrname}));
-        return AjaxResult.success(${classname});
+        return BaseResult.success(${classname});
     }
 
     /**
@@ -70,10 +70,10 @@ public class ${className}Controller extends BaseController {
      */
     @PostMapping
     @Operation(summary = "保存${comments}列表")
-    public AjaxResult save(@RequestBody ${className} ${classname}){
+    public BaseResult save(@RequestBody ${className} ${classname}){
 
         ${classname}Service.save(${classname});
-        return AjaxResult.success();
+        return BaseResult.success();
     }
 
     /**
@@ -83,10 +83,10 @@ public class ${className}Controller extends BaseController {
      */
     @PutMapping
     @Operation(summary = "修改${comments}列表")
-    public AjaxResult update(@RequestBody ${className} ${classname}){
+    public BaseResult update(@RequestBody ${className} ${classname}){
 
         ${classname}Service.updateById(${classname});
-        return AjaxResult.success();
+        return BaseResult.success();
     }
 
     /**
@@ -95,9 +95,9 @@ public class ${className}Controller extends BaseController {
      */
     @DeleteMapping
     @Operation(summary = "删除${comments}列表")
-    public AjaxResult delete(@RequestBody Long[] ${pk.attrname}s){
+    public BaseResult delete(@RequestBody Long[] ${pk.attrname}s){
 
         ${classname}Service.deleteByIds(${pk.attrname}s);
-        return AjaxResult.success();
+        return BaseResult.success();
     }
 }

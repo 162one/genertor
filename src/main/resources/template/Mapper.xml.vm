@@ -4,7 +4,7 @@
 <mapper namespace="${package}.${moduleName}.mapper.${className}Mapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="${package}.${moduleName}.domain.${className}" id="${classname}Map">
+    <resultMap type="${package}.${moduleName}.model.${className}" id="${classname}Map">
         #foreach($column in $columns)
             #if($column.columnName == $pk.columnName)
                 <id property="${column.attrname}" column="${column.columnName}" jdbcType="${column.dataTypeToUpperCase}"/>
