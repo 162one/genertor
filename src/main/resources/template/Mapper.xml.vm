@@ -15,7 +15,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        #foreach($column in $columns)#if($column.columnName == $pk.columnName)${column.columnName}#else,${column.columnName}#end#end
+        #foreach($column in $columns)#if($column.columnName == $pk.columnName)`${column.columnName}`#else,`${column.columnName}`#end#end
 
     </sql>
 
@@ -25,7 +25,7 @@
         from
             ${tableName}
         where
-            ${pk.columnName} = #{${pk.attrname},jdbcType=${pk.dataTypeToUpperCase}}
+            `${pk.columnName}` = #{${pk.attrname},jdbcType=${pk.dataTypeToUpperCase}}
     </select>
 
     <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="${package}.${moduleName}.model.po.${className}Po" useGeneratedKeys="true">
@@ -34,7 +34,7 @@
 #foreach($column in $columns)
 #if($column.columnName == $pk.columnName)
 #else
-                <if test="${column.attrname} != null">${column.columnName},</if>
+                <if test="${column.attrname} != null">`${column.columnName}`,</if>
 #end
 #end
             </trim>
@@ -55,27 +55,28 @@
 #if($column.columnName == $pk.columnName)
 #else
                 <if test="${column.attrname} != null">
-                    ${column.columnName} = #{${column.attrname},jdbcType=${column.dataTypeToUpperCase}},
+                    `${column.columnName}` = #{${column.attrname},jdbcType=${column.dataTypeToUpperCase}},
                 </if>
 #end
 #end
             </set>
-        where   id = #{id,jdbcType=BIGINT}
+        where
+            `id` = #{id,jdbcType=BIGINT}
     </update>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-        delete from ${tableName} WHERE ${pk.columnName} = #{${pk.attrname},jdbcType=${pk.dataTypeToUpperCase}}
+        delete from ${tableName} WHERE `${pk.columnName}` = #{${pk.attrname},jdbcType=${pk.dataTypeToUpperCase}}
     </delete>
 
     <insert id="batchInsert">
         INSERT INTO
-            ${tableName} (#foreach($column in $columns)#if($column.columnName == $pk.columnName)${column.columnName}#else,
-                ${column.columnName}#end#end
+            ${tableName} (#foreach($column in $columns)#if($column.columnName == $pk.columnName)#else,
+                `${column.columnName}`#end#end
 
             )
         VALUES
         <foreach collection="list" item="item" index="index" separator="," >
-            (#foreach($column in $columns)#if($column.columnName == $pk.columnName)${column.columnName}#else,
+            (#foreach($column in $columns)#if($column.columnName == $pk.columnName)#else,
                 #{item.${column.attrname}}#end#end
 
             )
